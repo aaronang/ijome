@@ -7,7 +7,8 @@ module.exports = {
   },
   "parser": "babel-eslint",
   "rules": {
-    "strict": 0
+    "strict": "off",
+    "no-console": "off"
   },
   "parserOptions": {
     "sourceType": "module"
