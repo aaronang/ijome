@@ -9,7 +9,7 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600, show: false, frame: false})
+  win = new BrowserWindow({width: 800, height: 600, frame: false})
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -32,17 +32,34 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createWindow()
-  // Register a 'CommandOrControl+X' shortcut listener.
-  const ret = globalShortcut.register('Shift+Space', () => {
-    robot.typeString("Hello World!")
+
+  win.on('hide', () => {
+    robot.typeString("hello")
   })
 
-  if (!ret) {
+  const colon = globalShortcut.register(':', () => {
+    app.focus()
+  })
+
+  const space = globalShortcut.register('Space', () => {
+    app.hide()
+  })
+
+  const esc = globalShortcut.register('Escape', () => {
+    app.hide()
+  })
+
+  if (!colon) {
     console.log('registration failed')
   }
 
-  // Check whether a shortcut is registered.
-  console.log(globalShortcut.isRegistered('Shift+Space'))
+  if (!space) {
+    console.log('Space registration failed')
+  }
+
+  if (!esc) {
+    console.error('Escape registration failed')
+  }
 })
 
 app.on('will-quit', () => {

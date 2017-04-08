@@ -8,7 +8,8 @@
   "scripts": {
     "start": "electron .",
     "build": "babel src -d lib --copy-files",
-    "watch": "babel src -w -d lib --copy-files"
+    "watch": "babel src -w -d lib --copy-files",
+    "rebuild": "npm rebuild --runtime=electron --target=1.6.2 --disturl=https://atom.io/download/atom-shell --abi=51"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
