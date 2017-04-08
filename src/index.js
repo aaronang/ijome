@@ -1,4 +1,5 @@
 import {app, BrowserWindow, globalShortcut} from 'electron'
+import robot from 'robotjs'
 import path from 'path'
 import url from 'url'
 
@@ -33,7 +34,7 @@ app.on('ready', () => {
   createWindow()
   // Register a 'CommandOrControl+X' shortcut listener.
   const ret = globalShortcut.register('Shift+Space', () => {
-    win.show()
+    robot.typeString("Hello World!")
   })
 
   if (!ret) {
