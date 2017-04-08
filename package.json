@@ -2,14 +2,18 @@
   "name": "ijome",
   "version": "0.1.0",
   "description": "Emoji suggestion while typing.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "Aaron Ang <awz.ang@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "babel src -d lib --copy-files",
+    "watch": "babel src -w -d lib --copy-files"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.1",
+    "babel-preset-env": "^1.3.3",
     "electron": "^1.6.2",
     "eslint": "^3.19.0"
   }
