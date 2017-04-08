@@ -1,0 +1,14 @@
+{
+  "name": "ijome",
+  "version": "0.1.0",
+  "description": "Emoji suggestion while typing.",
+  "main": "index.js",
+  "author": "Aaron Ang <awz.ang@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^1.6.2"
+  }
+}
