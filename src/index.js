@@ -26,6 +26,11 @@ app.on('ready', () => {
     robot.keyTap("v", "command")
   })
 
+  win.on('focus', () => {
+    clipboard.writeText("✨")
+  })
+
+
   const colon = globalShortcut.register('Super+;', () => {
     app.focus()
   })
@@ -35,9 +40,6 @@ app.on('ready', () => {
   }
 })
 
-app.on('focus', () => {
-  clipboard.writeText("✨")
-})
 
 app.on('will-quit', () => {
   globalShortcut.unregisterAll()
