@@ -27,26 +27,17 @@ function createWindow () {
 app.on('ready', () => {
   createWindow()
 
-  win.on('hide', () => {
-    robot.keyTap("v", "command")
-  })
+  win.on('hide', () => robot.keyTap("v", "command"))
+  win.on('focus', () => clipboard.writeText("✨"))
 
-  const colon = globalShortcut.register('Super+;', () => {
-    app.focus()
-  })
+  const colon = globalShortcut.register('Super+;', () => app.focus())
 
   if (!colon) {
-    console.log('registration failed')
+    console.error('registration failed')
   }
 })
 
-app.on('focus', () => {
-  clipboard.writeText("✨")
-})
-
-app.on('will-quit', () => {
-  globalShortcut.unregisterAll()
-})
+app.on('will-quit', () => globalShortcut.unregisterAll())
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
