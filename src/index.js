@@ -6,7 +6,12 @@ import url from 'url'
 let win
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 600, frame: false})
+  win = new BrowserWindow({
+    width: 800, 
+    height: 600, 
+    frame: false,
+    icon: path.join(__dirname, 'images/icon.png')
+  })
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -26,11 +31,6 @@ app.on('ready', () => {
     robot.keyTap("v", "command")
   })
 
-  win.on('focus', () => {
-    clipboard.writeText("✨")
-  })
-
-
   const colon = globalShortcut.register('Super+;', () => {
     app.focus()
   })
@@ -40,6 +40,9 @@ app.on('ready', () => {
   }
 })
 
+app.on('focus', () => {
+  clipboard.writeText("✨")
+})
 
 app.on('will-quit', () => {
   globalShortcut.unregisterAll()
