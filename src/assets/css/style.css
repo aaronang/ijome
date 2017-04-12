@@ -1,9 +1,22 @@
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Dosis'), local('Dosis'), url(fonts/Dosis-Regular.ttf) format('truetype');
+}
+
+body {
+  background: #ECEFF1;
+  font-family: 'Dosis';
+}
+
 .ui.container {
   padding: 1rem 0;
 }
 
 .ui.input {
   margin-bottom: 1rem;
+  color: #546E7A;
 }
 
 .result {
@@ -19,22 +32,22 @@
   background: #3498db;
 }
 
-.result:hover .description, 
-.result:hover .emoji {
+.result:hover .description {
   color: #fff;
 }
 
 .emoji {
-  display: inline-block;
-  padding-top: 1px;
-  margin-right: 0.3rem;
+  display: table-cell;
+  padding-top: 0.15rem;
+  color: #fff;
 }
 
 .description {
   display: table-cell;
-  font-weight: lighter;
-  font-size: 0.9rem;
+  font-size: 1rem;
   vertical-align: middle;
-  padding-bottom: 1px;
-  padding-right: 3px;
+  padding-bottom: 0.25rem;
+  padding-right: 0.2rem;
+  padding-left: 0.3rem;
+  color: #546E7A;
 }
