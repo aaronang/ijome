@@ -27,8 +27,8 @@ function createWindow () {
 app.on('ready', () => {
   createWindow()
 
-  win.on('hide', () => robot.keyTap("v", "command"))
-  win.on('focus', () => clipboard.writeText("✨"))
+  // win.on('hide', () => robot.keyTap("v", "command"))
+  // win.on('focus', () => clipboard.writeText("✨"))
 
   const colon = globalShortcut.register('Super+;', () => app.focus())
 
