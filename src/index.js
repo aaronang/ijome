@@ -7,8 +7,8 @@ let win
 
 function createWindow () {
   win = new BrowserWindow({
-    width: 800, 
-    height: 600, 
+    width: 500, 
+    height: 300, 
     frame: false,
     icon: path.join(__dirname, 'images/icon.png')
   })
