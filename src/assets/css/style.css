@@ -36,6 +36,14 @@ body {
   color: #fff;
 }
 
+.selected {
+  background: #3498db;
+}
+
+.selected .description {
+  color: #fff;
+}
+
 .emoji {
   display: table-cell;
   padding-top: 0.15rem;
