@@ -1,7 +1,8 @@
-import {app, BrowserWindow, globalShortcut, clipboard} from 'electron'
+import {app, BrowserWindow, globalShortcut, clipboard, ipcMain} from 'electron'
 import robot from 'robotjs'
 import path from 'path'
 import url from 'url'
+
 
 let win
 
@@ -24,11 +25,15 @@ function createWindow () {
   })
 }
 
+ipcMain.on('finish', (e, emoji) => {
+  clipboard.writeText(emoji)
+  app.hide()
+})
+
 app.on('ready', () => {
   createWindow()
 
-  // win.on('hide', () => robot.keyTap("v", "command"))
-  // win.on('focus', () => clipboard.writeText("✨"))
+  win.on('hide', () => robot.keyTap("v", "command"))
 
   const colon = globalShortcut.register('Super+;', () => app.focus())
 

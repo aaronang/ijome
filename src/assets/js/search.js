@@ -60,5 +60,13 @@ search.onkeydown = function(e) {
       selected.classList.add("selected")
     }
     search.value = selected.lastChild.textContent
+  } else if (e.keyCode === 13) { // Enter
+    const emoji = selected.firstChild.textContent
+    const {ipcRenderer} = require('electron')
+    ipcRenderer.send('finish', emoji)
+    selected.classList.remove("selected")
+    results.firstElementChild.classList.add("selected")
+    search.value = ""
+    selected = null
   }
 };
