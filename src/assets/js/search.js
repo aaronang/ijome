@@ -1,47 +1,13 @@
-const data = [
-  {
-    emoji: "😬",
-    shortcode: "grimacing",
-    aka: [
-      "awkward",
-      "eek",
-      "foot in mouth", 
-      "nervous", 
-      "snapchat mutual #1 best friend"
-    ]
-  },
-  {
-    emoji: "😂",
-    shortcode: "joy",
-    aka: [
-      "laughing",
-      "laughing crying",
-      "laughing tears",
-      "lol"
-    ]
-  },
-  {
-    emoji: "❤️",
-    shortcode: "heart",
-    aka: [
-      "heart",
-      "love heart",
-      "red heart"
-    ]
-  },
-]
-
-
 function emoji(data) {
   const div = document.createElement('div')
   div.className = "result"
-  div.innerHTML = `<span class="emoji">${data.emoji}</span> <span class="description">${data.shortcode}</span>`
+  div.innerHTML = `<span class="emoji">${data.emoji}</span> <span class="description">${data.aliases[0]}</span>`
   return div
 }
 
 const results = document.getElementById("results")
 
-data.map(emoji).forEach(element => results.appendChild(element))
+emojis.map(emoji).forEach(element => results.appendChild(element))
 
 results.firstElementChild.classList.add("selected")
 
@@ -79,6 +45,6 @@ function filterEmojis() {
   const query = search.value
   console.log(query)
   results.innerHTML = ""
-  data.filter(e => e.shortcode.includes(query))
+  emojis.filter(e => e.shortcode.includes(query))
       .forEach(element => results.appendChild(emoji(element)))
 }
