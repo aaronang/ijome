@@ -15,7 +15,7 @@ let selected = null
 
 const search = document.getElementById("search")
 
-search.onkeyup = function(e) {
+search.onkeydown = function(e) {
   if (e.keyCode === 9) { // Tab
     e.preventDefault()
     if (selected === null) {
@@ -34,7 +34,11 @@ search.onkeyup = function(e) {
     results.firstElementChild.classList.add("selected")
     search.value = ""
     selected = null
-  } else {
+  } 
+}
+
+search.onkeyup = function(e) {
+  if (e.keyCode !== 9 && e.keyCode !== 13) {
     filterEmojis()
     selected = results.firstElementChild
     selected.classList.add("selected")
@@ -45,6 +49,6 @@ function filterEmojis() {
   const query = search.value
   console.log(query)
   results.innerHTML = ""
-  emojis.filter(e => e.shortcode.includes(query))
+  emojis.filter(e => e.aliases[0].includes(query))
       .forEach(element => results.appendChild(emoji(element)))
 }
