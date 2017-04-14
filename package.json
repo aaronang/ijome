@@ -19,7 +19,6 @@
     "eslint": "^3.19.0"
   },
   "dependencies": {
-    "robotjs": "^0.4.7",
-    "semantic-ui": "^2.2.10"
+    "robotjs": "^0.4.7"
   }
 }
