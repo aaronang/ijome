@@ -1,3 +1,5 @@
+import {ipcRenderer} from 'electron'
+
 function emoji(data) {
   const div = document.createElement('div')
   div.className = "result"
@@ -29,13 +31,16 @@ search.onkeydown = function(e) {
     selected.scrollIntoView(false)
   } else if (e.keyCode === 13) { // Enter
     const emoji = selected.firstChild.textContent
-    const {ipcRenderer} = require('electron')
     ipcRenderer.send('finish', emoji)
     selected.classList.remove("selected")
     results.firstElementChild.classList.add("selected")
     search.value = ""
     selected = null
-  } 
+  } else if (e.keyCode === 27) { // Esc
+    ipcRenderer.send('escape')
+    search.value = ""
+    selected = null
+  }
 }
 
 search.onkeyup = function(e) {

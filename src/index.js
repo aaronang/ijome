@@ -25,15 +25,25 @@ function createWindow () {
   })
 }
 
+let paste = false
+
 ipcMain.on('finish', (e, emoji) => {
+  paste = true
   clipboard.writeText(emoji)
   app.hide()
 })
 
+ipcMain.on('escape', () => app.hide())
+
 app.on('ready', () => {
   createWindow()
 
-  win.on('hide', () => robot.keyTap("v", "command"))
+  win.on('hide', () => {
+    if (paste) {
+      robot.keyTap("v", "command")
+      paste = false
+    }
+  })
 
   const colon = globalShortcut.register('Super+;', () => app.focus())
 
