@@ -1,4 +1,9 @@
 import {ipcRenderer} from 'electron'
+import emojis from './assets/js/emoji'
+
+const results = document.getElementById("results")
+const search = document.getElementById("search")
+let selected = null
 
 function emoji(data) {
   const div = document.createElement('div')
@@ -7,15 +12,9 @@ function emoji(data) {
   return div
 }
 
-const results = document.getElementById("results")
-
 emojis.map(emoji).forEach(element => results.appendChild(element))
 
 results.firstElementChild.classList.add("selected")
-
-let selected = null
-
-const search = document.getElementById("search")
 
 search.onkeydown = function(e) {
   if (e.keyCode === 9) { // Tab
@@ -39,7 +38,9 @@ search.onkeydown = function(e) {
   } else if (e.keyCode === 27) { // Esc
     ipcRenderer.send('escape')
     search.value = ""
-    selected = null
+    selected.classList.remove("selected")
+    selected = results.firstElementChild
+    selected.classList.add("selected")
   }
 }
 

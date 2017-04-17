@@ -1,4 +1,4 @@
-const emojis = [
+[
   {
     "emoji": "😀"
   , "description": "grinning face"
