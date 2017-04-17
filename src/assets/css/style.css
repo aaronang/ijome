@@ -8,10 +8,45 @@
 body {
   background: #ECEFF1;
   font-family: 'Dosis';
+  padding: 1rem;
 }
 
-.ui.container {
-  padding: 1rem 0;
+#search {
+  font-weight: bold;
+  font-family: 'Dosis';
+  font-size: 0.8rem;
+  border-radius: 100rem;
+  border-style: solid;
+  border-color: #dededf;
+  border-width: 1px;
+  color: #546E7A;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-bottom: 0.6rem;
+  width: 100%;
+  vertical-align: middle;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+#search:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #dededf;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #dededf;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #dededf;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #dededf;
 }
 
 .ui.input {
@@ -22,7 +57,7 @@ body {
 .result {
   display: inline-table;
   margin: 0 0.1rem 0.2rem 0;
-  height: 1.2rem;
+  height: 1.4rem;
   text-align: center;
   padding: 0 0.5rem;
   border-radius: 1rem;
@@ -38,15 +73,15 @@ body {
 
 .emoji {
   display: table-cell;
-  padding-top: 0.15rem;
+  padding-top: 0.3rem;
   color: #fff;
 }
 
 .description {
   display: table-cell;
-  font-size: 1rem;
+  font-size: 0.8rem;
   vertical-align: middle;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.1rem;
   padding-right: 0.2rem;
   padding-left: 0.3rem;
   color: #546E7A;
