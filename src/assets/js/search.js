@@ -73,11 +73,40 @@ search.onkeydown = function(e) {
     selected.classList.remove("selected")
     selected = results.firstElementChild
     selected.classList.add("selected")
+  } else if (e.keyCode === 37 || e.keyCode === 38) { // Left, Up
+    e.preventDefault()
+    if (selected === null) {
+      selected = results.firstElementChild
+    } else if (selected !== results.firstElementChild) {
+      selected.classList.remove("selected")
+      selected = selected.previousSibling || results.firstElementChild
+      selected.classList.add("selected")
+    }
+    search.value = selected.lastChild.textContent
+    selected.scrollIntoView(false)
+  } else if (e.keyCode === 39 || e.keyCode === 40) { // Right, Down
+    e.preventDefault()
+    if (selected === null) {
+      selected = results.firstElementChild
+    } else {
+      selected.classList.remove("selected")
+      selected = selected.nextSibling || results.firstElementChild
+      selected.classList.add("selected")
+    }
+    search.value = selected.lastChild.textContent
+    selected.scrollIntoView(false)
   }
 }
 
 search.onkeyup = function(e) {
-  if (e.keyCode !== 9 && e.keyCode !== 13 && e.keyCode !== 186 && e.keyCode !== 91) {
+  if (e.keyCode !== 9 && 
+      e.keyCode !== 13 && 
+      e.keyCode !== 186 && 
+      e.keyCode !== 91 &&
+      e.keyCode !== 37 &&
+      e.keyCode !== 38 &&
+      e.keyCode !== 39 &&
+      e.keyCode !== 40) {
     filterEmojis()
     selected = results.firstElementChild
     selected.classList.add("selected")
