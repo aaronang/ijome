@@ -27,6 +27,8 @@ function click(e) {
   results.firstElementChild.classList.add("selected")
   search.value = ""
   selected = null
+  window.scrollTo(0, 0)
+  search.focus()
 }
 
 function emoji(data) {
@@ -40,7 +42,6 @@ function emoji(data) {
 
 function filterEmojis() {
   const query = search.value
-  console.log(query)
   results.innerHTML = ""
   emojis.filter(e => e.aliases[0].includes(query))
       .forEach(element => results.appendChild(emoji(element)))
@@ -65,6 +66,7 @@ search.onkeydown = function(e) {
     results.firstElementChild.classList.add("selected")
     search.value = ""
     selected = null
+    window.scrollTo(0, 0)
   } else if (e.keyCode === 27) { // Esc
     ipcRenderer.send('escape')
     search.value = ""
@@ -75,7 +77,7 @@ search.onkeydown = function(e) {
 }
 
 search.onkeyup = function(e) {
-  if (e.keyCode !== 9 && e.keyCode !== 13) {
+  if (e.keyCode !== 9 && e.keyCode !== 13 && e.keyCode !== 186 && e.keyCode !== 91) {
     filterEmojis()
     selected = results.firstElementChild
     selected.classList.add("selected")
