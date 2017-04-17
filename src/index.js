@@ -5,6 +5,7 @@ import url from 'url'
 
 let win = null
 let paste = false
+let oldContent = null
 
 function createWindow () {
   win = new BrowserWindow({
@@ -20,20 +21,20 @@ function createWindow () {
     slashes: true
   }))
 
-  win.on('closed', () => {
-    win = null
-  })
+  win.on('closed', () => win = null)
 
   win.on('hide', () => {
     if (paste) {
       robot.keyTap("v", "command")
       paste = false
+      setTimeout(() => clipboard.writeText(oldContent), 500)
     }
   })
 }
 
 ipcMain.on('finish', (e, emoji) => {
   paste = true
+  oldContent = clipboard.readText()
   clipboard.writeText(emoji)
   app.hide()
 })
