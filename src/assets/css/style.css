@@ -11,8 +11,11 @@ body {
   padding: 1rem;
 }
 
+.container {
+  position: relative;
+}
+
 #search {
-  font-weight: bold;
   font-family: 'Dosis';
   font-size: 0.8rem;
   border-radius: 100rem;
@@ -32,6 +35,16 @@ body {
 #search:focus {
   outline: none;
   border-color: #3498db;
+}
+
+svg {
+  width: 0.9rem;
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  fill: #546E7A;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
