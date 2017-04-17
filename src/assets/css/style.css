@@ -28,14 +28,6 @@ body {
   border-radius: 1rem;
 }
 
-.result:hover {
-  background: #3498db;
-}
-
-.result:hover .description {
-  color: #fff;
-}
-
 .selected {
   background: #3498db;
 }
