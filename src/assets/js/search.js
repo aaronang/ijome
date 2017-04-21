@@ -62,17 +62,18 @@ search.onkeydown = function(e) {
   } else if (e.keyCode === 13) { // Enter
     const emoji = selected.firstChild.textContent
     ipcRenderer.send('finish', emoji)
-    selected.classList.remove("selected")
-    results.firstElementChild.classList.add("selected")
     search.value = ""
-    selected = null
+    selected.classList.remove("selected")
+    filterEmojis()
+    results.firstElementChild.classList.add("selected")
     window.scrollTo(0, 0)
   } else if (e.keyCode === 27) { // Esc
     ipcRenderer.send('escape')
     search.value = ""
     selected.classList.remove("selected")
-    selected = results.firstElementChild
-    selected.classList.add("selected")
+    filterEmojis()
+    results.firstElementChild.classList.add("selected")
+    window.scrollTo(0, 0)
   } else if (e.keyCode === 37 || e.keyCode === 38) { // Left, Up
     e.preventDefault()
     if (selected === null) {
@@ -99,14 +100,15 @@ search.onkeydown = function(e) {
 }
 
 search.onkeyup = function(e) {
-  if (e.keyCode !== 9 && 
-      e.keyCode !== 13 && 
-      e.keyCode !== 186 && 
-      e.keyCode !== 91 &&
-      e.keyCode !== 37 &&
-      e.keyCode !== 38 &&
-      e.keyCode !== 39 &&
-      e.keyCode !== 40) {
+  if (e.keyCode !== 9 &&    // tab
+      e.keyCode !== 13 &&   // enter
+      e.keyCode !== 186 &&  // semi-colon
+      e.keyCode !== 91 &&   // command
+      e.keyCode !== 37 &&   // left arrow
+      e.keyCode !== 38 &&   // up arrow
+      e.keyCode !== 39 &&   // right arrow
+      e.keyCode !== 40 &&   // down arrow
+      e.keyCode !== 27) {   // esc
     filterEmojis()
     selected = results.firstElementChild
     selected.classList.add("selected")
